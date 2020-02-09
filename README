@@ -1,0 +1,7 @@
+This branch contains Containerfile for building the container with the TeamSpeak 3 server
+
+Build with:
+  podman build -f containerfile
+
+Run container with
+  podman run --network host -ti <hash> bash

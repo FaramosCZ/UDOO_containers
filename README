@@ -4,4 +4,4 @@ Build with:
   podman build -f containerfile
 
 Run container with
-  podman run --network host -ti <hash> bash
+  podman run --network host -ti <hash>

@@ -1,7 +1,7 @@
 FROM registry.fedoraproject.org/fedora-minimal
 LABEL maintainer="Michal Schorm"
 
-#COPY *. /usr/src/perl/
+COPY alias.sh alias_text /etc/profile.d/
 
 ENV TS_SERVER_VERSION 3.11.0
 
@@ -19,3 +19,5 @@ RUN true \
     && touch .ts3server_license_accepted
 
 WORKDIR /home/user/teamspeak3-server_linux_amd64/
+
+ENTRYPOINT /usr/bin/bash

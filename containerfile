@@ -20,4 +20,5 @@ RUN true \
 
 WORKDIR /home/user/teamspeak3-server_linux_amd64/
 
-ENTRYPOINT /usr/bin/bash
+# Command to be ran by default, IF NOT OVERRIDDEN
+CMD ./ts3server pidfile=ts3server.pid

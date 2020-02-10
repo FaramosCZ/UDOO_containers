@@ -4,4 +4,10 @@ Build with:
   podman build -f containerfile
 
 Run container with
-  podman run --network host -ti <hash>
+  podman run --network host -d <hash>
+
+Attach to the conatiner (to the TS server output) with:
+  podman attach <hash>
+
+Connect to the conatiner independently why it runs:
+  podman exec -ti <hash> bash

@@ -1,5 +1,27 @@
 This branch contains Containerfile for building the container with the TeamSpeak 3 server
 
+============================================
+# HOW TO PREPARE THE CONSTAINER FOR PRODUCTION
+
+podman build -f containerfile
+podman run --network host -ti <hash_of_the_BUILT_container>
+
+#IN PARALLEL
+| podman exec -ti <hash_of_the_RUNNING_container> bash
+|	nano ../TS3_SERVER_SECRETS
+|
+| podman commit <hash_of_the_RUNNING_container> 
+| podman tag <new_hash> teamspeak3_server
+
+---
+
+# At this point, the server will autostart upon the container execution
+# Run with:
+podman run --network host -d <hash_of_the_TAGGED_image>
+
+============================================
+# GENERAL HELP
+
 Build with:
   podman build -f containerfile
 
@@ -11,3 +33,5 @@ Attach to the conatiner (to the TS server output) with:
 
 Connect to the conatiner independently why it runs:
   podman exec -ti <hash> bash
+
+============================================

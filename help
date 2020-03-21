@@ -1,0 +1,39 @@
+[lod@UDOO UDOO_containers]$ podman run --network host  -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix:0 --device /dev/snd -ti localhost/ts3_client
+bash-5.0# history 
+    1  history 
+bash-5.0# su usr/
+su: user usr/ does not exist
+bash-5.0# su user
+[user@UDOO /]$ history 
+    1  cd
+    2  ls
+    3  pwd
+    4  wget https://files.teamspeak-services.com/releases/client/3.3.2/TeamSpeak3-Client-linux_amd64-3.3.2.run
+    5  ls
+    6  chmod +x TeamSpeak3-Client-linux_amd64-3.3.2.run 
+    7  ls
+    8  ./TeamSpeak3-Client-linux_amd64-3.3.2.run 
+    9  ls
+   10  cd TeamSpeak3-Client-linux_amd64
+   11  ls
+   12  ./ts3client_runscript.sh 
+   13  nano ./ts3client_runscript.sh 
+   14  nano ./ts3client_runscript.sh 
+   15  ldd ts3client_linux_amd64
+   16  ls
+   17  cd
+   18  ls
+   19  cd TeamSpeak3-Client-linux_amd64
+   20  ls
+   21  ./ts3client_runscript.sh 
+   22  ldd ts3client_linux_amd64
+   23  ldd ./*so
+   24  ldd ./*so*
+   25  ldd ./*.so*
+   26  reset
+   27  L
+   28  ls -alh
+   29  ldd ./*.so ./*.so.*
+   30  ldd ./*.so ./*.so.* | grep -i not
+   31  history 
+

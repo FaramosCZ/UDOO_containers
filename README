@@ -25,7 +25,10 @@ podman run --network host -d <hash_of_the_TAGGED_image>
 Build with:
   podman build -f containerfile
 
-Run container with
+Tag the image (assign name to it):
+  podman tag <hash> <name>
+
+Run container with:
   podman run --network host -d <hash>
 
 Attach to the conatiner (to the TS server output) with:

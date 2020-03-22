@@ -6,7 +6,7 @@ This branch contains Containerfile for building the container with the TeamSpeak
 podman build -f containerfile
 podman run --network host -ti <hash_of_the_BUILT_container>
 
-#IN PARALLEL
+# IN PARALLEL
 | podman exec -ti <hash_of_the_RUNNING_container> bash
 |	nano ../TS3_SERVER_SECRETS
 |

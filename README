@@ -1,0 +1,26 @@
+This branch contains Containerfile for building the container with the XEyes GUI app
+
+============================================
+# HOW TO PREPARE THE CONSTAINER FOR PRODUCTION
+
+podman build -f containerfile
+
+============================================
+# GENERAL HELP
+
+Build with:
+  podman build -f containerfile
+
+Tag the image (assign name to it):
+  podman tag <hash> <name>
+
+Run the GUI container with:
+  podman run -d -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=:0 <hash>
+
+Attach to the running conatiner (output) with:
+  podman attach <hash>
+
+Connect to the conatiner independently why it runs:
+  podman exec -ti <hash> bash
+
+============================================

@@ -4,7 +4,13 @@ LABEL \
    maintainer="Michal Schorm" \
    summary="TeamSpeak 3 GUI client" \
    name="TS3_client" \
-   usage="podman run --network host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix:0 --device /dev/snd -d "
+   usage=" \
+  podman run -ti --network host -v /tmp/.X11-unix:/tmp/.X11-unix \
+     --env PULSE_SERVER=unix:/tmp/pulseaudio.socket \
+     --env PULSE_COOKIE=/tmp/pulseaudio.cookie \
+     --volume /tmp/pulseaudio.socket:/tmp/pulseaudio.socket \
+     --volume /tmp/pulseaudio.client.conf:/etc/pulse/client.conf \
+  -e DISPLAY=:0 "
 
 # Default port for virtual voice server (UDP)
 EXPOSE 9987/udp

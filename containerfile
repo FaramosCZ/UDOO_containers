@@ -14,7 +14,7 @@ COPY alias.sh alias_text /etc/profile.d/
 
 
 
-ENV TS_SERVER_VERSION 3.11.0
+ENV TS_SERVER_VERSION 3.12.0
 
 RUN set -vx \
     && useradd user \

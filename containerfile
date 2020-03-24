@@ -4,7 +4,7 @@ LABEL \
    maintainer="Michal Schorm" \
    summary="TeamSpeak 3 headless server" \
    name="TS3_server" \
-   usage="podman run --network host -d "
+   usage="podman run -d --network host "
 
 # Default port for virtual voice server (UDP)
 EXPOSE 9987/udp

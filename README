@@ -16,7 +16,8 @@ Tag the image (assign name to it):
 
 Run container with:
   # First we need to create a Host Pulseaudio unix socket so we can mount it into the container
-  pactl load-module module-native-protocol-unix socket=/tmp/pulseaudio.socket
+  pactl load-module module-native-protocol-unix auth-anonymous=1 socket=/tmp/pulseaudio.socket
+
   # Second we need to create a configuration file to mount into the container
 echo -e \
 '

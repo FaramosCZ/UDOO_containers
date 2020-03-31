@@ -31,6 +31,9 @@ RUN set -vx \
 USER user
 WORKDIR /home/user/
 
+# Create a directory for the TS3 Client data, owned by the non-privileged user
+RUN set -vx \
+    && mkdir .ts3client
 
 
 # Fetch the client

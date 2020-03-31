@@ -1,0 +1,51 @@
+This branch contains Containerfile for building the container with the TeamSpeak 3 Client GUI with sound
+
+============================================
+# HOW TO PREPARE THE CONSTAINER FOR PRODUCTION
+
+podman build -f containerfile
+
+============================================
+# GENERAL HELP
+
+Build with:
+  podman build -f containerfile
+
+Tag the image (assign name to it):
+  podman tag <hash> <name>
+
+Run container with:
+  # First we need to create a Host Pulseaudio unix socket so we can mount it into the container
+  pactl load-module module-native-protocol-unix auth-anonymous=1 socket=/tmp/pulseaudio.socket
+
+  # Second we need to create a configuration file to mount into the container
+echo -e \
+'
+default-server = unix:/tmp/pulseaudio.socket
+# Prevent a server running in the container
+autospawn = no
+daemon-binary = /bin/true
+# Prevent the use of shared memory
+enable-shm = false
+' > /tmp/pulseaudio.client.conf
+
+  # Now we can finally run the container
+  podman run -ti --network host -v /tmp/.X11-unix:/tmp/.X11-unix     
+     --env PULSE_SERVER=unix:/tmp/pulseaudio.socket     
+     --env PULSE_COOKIE=/tmp/pulseaudio.cookie     
+     --volume /tmp/pulseaudio.socket:/tmp/pulseaudio.socket     
+     --volume /tmp/pulseaudio.client.conf:/etc/pulse/client.conf  
+  -e DISPLAY=:0 ts3_client_2 bash
+
+# Running of the container based on following guide:
+# https://github.com/mviereck/x11docker/wiki/Container-sound:-ALSA-or-Pulseaudio#pulseaudio-with-shared-socket
+
+
+
+Attach to the conatiner (to the TS client CLI output) with:
+  podman attach <hash>
+
+Connect to the conatiner independently why it runs:
+  podman exec -ti <hash> bash
+
+============================================

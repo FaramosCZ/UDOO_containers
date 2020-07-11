@@ -1,0 +1,19 @@
+Edit "/etc/dnf/dnf.conf", add:
+
+  proxy=http://127.0.0.1:8031
+  zchunk=false
+  deltarpm=0
+
+-------------------
+
+Create a permanent cache location (which will be mounted into the container)
+For each Fedora release, create a separate folder and run a separate container on a separate port
+
+  cd /DATA/dnf_proxy_cache/
+  for i in f30 f31 f32; do mkdir $i ; cd $i; mkdir -p rpms yum; chown lod:lod rpms yum ; chmod a+rwx rpms yum; cd - ; done
+
+-------------------
+
+Run with:
+
+  podman run -ti -p 8031:8080 -v /DATA/dnf_proxy_cache/f31/:/home/user/:Z localhost/dnf_proxy_cache

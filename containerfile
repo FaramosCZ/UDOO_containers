@@ -26,7 +26,8 @@ ENV TS_CLIENT_VERSION 3.5.0
 
 RUN set -vx \
     && useradd user \
-    && microdnf install wget tree nano less tar bzip2 procps-ng pulseaudio pulseaudio-utils
+    && microdnf install wget tree nano less tar bzip2 procps-ng pulseaudio pulseaudio-utils \
+    && microdnf clean all
 
 USER user
 WORKDIR /home/user/

@@ -18,7 +18,8 @@ ENV TS_SERVER_VERSION 3.12.0
 
 RUN set -vx \
     && useradd user \
-    && microdnf install wget tree nano less tar bzip2 procps-ng
+    && microdnf install wget tree nano less tar bzip2 procps-ng \
+    && microdnf clean all
 
 USER user
 WORKDIR /home/user/

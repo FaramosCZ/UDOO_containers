@@ -7,6 +7,7 @@ LABEL \
 
 
 RUN set -vx \
-    && microdnf install xeyes
+    && microdnf install xeyes \
+    && microdnf clean all
 
 CMD /usr/bin/xeyes -geometry +10+10

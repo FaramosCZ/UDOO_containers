@@ -1,5 +1,4 @@
-#FROM registry.fedoraproject.org/fedora-minimal
-FROM registry.fedoraproject.org/fedora
+FROM registry.fedoraproject.org/fedora-minimal
 
 LABEL \
    maintainer="Michal Schorm" \
@@ -13,9 +12,9 @@ EXPOSE 8080/udp
 
 RUN set -vx \
     && useradd user \
-    && dnf -y install python2
-#    && microdnf install python2
-
+    && microdnf install python2 \
+    && microdnf clean all
+# it is crucial to cleanup the DNF cache. It reduces the container size to half !
 
 USER user
 WORKDIR /home/user/
